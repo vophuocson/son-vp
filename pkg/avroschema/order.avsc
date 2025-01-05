@@ -1,0 +1,135 @@
+{
+  "type": "record",
+  "name": "Order",
+  "namespace": "com.example",
+  "fields": [
+    {
+      "name": "id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "created_at",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    },
+    {
+      "name": "state",
+      "type": "string"
+    },
+    {
+      "name": "total_price",
+      "type": "double"
+    },
+    {
+      "name": "special_instruction",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name": "discount",
+      "type": "double"
+    },
+    {
+      "name": "customer_id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "restaurant_id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "order_items",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "order_items",
+          "fields": [
+            {
+              "name": "menu_id",
+              "type": {
+                "type": "string",
+                "logicalType": "uuid"
+              }
+            },
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "quality",
+              "type": "int"
+            },
+            {
+              "name": "price",
+              "type": "double"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "delivery_info",
+      "type": {
+        "type": "record",
+        "name": "DeliveryInfo",
+        "fields": [
+          {
+            "name": "address",
+            "type": "string"
+          },
+          {
+            "name": "placed_time",
+            "type": {
+              "type": "long",
+              "logicalType": "timestamp-millis"
+            }
+          },
+          {
+            "name": "delivery_time",
+            "type": ["null", {
+              "type": "long",
+              "logicalType": "timestamp-millis"
+            }],
+            "default": null
+          },
+          {
+            "name": "status",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "payment_info",
+      "type": {
+        "type": "record",
+        "name": "PaymentInfo",
+        "fields": [
+          {
+            "name": "status",
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "type": {
+              "type": "string",
+              "logicalType": "uuid"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
